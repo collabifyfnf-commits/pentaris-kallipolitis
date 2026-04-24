@@ -18,15 +18,8 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     if (mobileOpen) document.body.style.overflow = "hidden";
@@ -40,11 +33,7 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-          scrolled
-            ? "bg-aegean/95 backdrop-blur-[12px] shadow-lg shadow-aegean/20"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 bg-aegean/95 backdrop-blur-[12px] shadow-lg shadow-aegean/20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -58,7 +47,7 @@ export default function Navbar() {
                   Πεντάρης–Καλλιπολίτης
                 </div>
                 <div className="text-horizon/70 text-[11px] font-dm-mono tracking-wide uppercase">
-                  Κλιματισμός · Μηχανολογικές Μελέτες
+                  Μηχανολογικές Μελέτες · Κλιματισμός
                 </div>
               </div>
             </Link>
